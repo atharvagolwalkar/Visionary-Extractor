@@ -182,7 +182,8 @@ def predictor(image_link, entity_name,index,group_id):
     return result
 
 if __name__ == "__main__":
-    DATASET_FOLDER = 'C:\\Users\\Dipak\\OneDrive - South Indian Education Society\\Desktop\\cognition_24\\cognition_24'
+    # Use current directory for deployment compatibility
+    DATASET_FOLDER = os.path.dirname(os.path.abspath(__file__))
     
     test = pd.read_csv(os.path.join(DATASET_FOLDER, 'sample.csv'))
     
