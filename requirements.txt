@@ -1,6 +1,7 @@
 setuptools>=65.0.0
 wheel>=0.37.0
 Flask>=2.3.0
+gunicorn>=21.2.0
 opencv-python-headless>=4.8.0
 pytesseract>=0.3.10
 requests>=2.31.0
