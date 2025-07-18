@@ -1,0 +1,11 @@
+setuptools>=65.0.0
+wheel>=0.37.0
+Flask>=2.3.0
+opencv-python-headless>=4.8.0
+pytesseract>=0.3.10
+requests>=2.31.0
+numpy>=1.24.0
+Pillow>=10.0.0
+easyocr>=1.7.0
+pandas>=2.0.0
+tqdm>=4.66.0
