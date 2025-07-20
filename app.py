@@ -10,10 +10,15 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    image_link = request.form['image_link']
-    entity_name = request.form['entity_name']
-    prediction = process_image_url(image_link, entity_name)
-    return render_template('result.html', image_link=image_link, prediction=prediction)
+    try:
+        image_link = request.form.get('image_link')
+        entity_name = request.form.get('entity_name')
+        prediction = process_image_url(image_link, entity_name)  # Make sure this function is imported
+        return render_template('result.html', prediction=prediction)
+    except Exception as e:
+        print(f"Error in /predict: {e}")  # For server logs
+        return f"Error: {str(e)}"          # For user feedback
+
 
 if __name__ == "__main__":
     # Use environment variable for port (required for Render)

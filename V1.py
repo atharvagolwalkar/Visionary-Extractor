@@ -8,15 +8,17 @@ from PIL import Image, ImageEnhance
 import easyocr
 import pandas as pd
 import os
+
 def download_image(url):
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        image = Image.open(BytesIO(response.content))
-        return image  # Return as PIL Image for further processing
-    except requests.RequestException as e:
-        print(f"Error downloading image from {url}: {e}")
-        return None
+    response = requests.get(url)
+    # Check if the request succeeded
+    if response.status_code == 200 and 'image' in response.headers.get('Content-Type', ''):
+        try:
+            return Image.open(BytesIO(response.content))
+        except Exception as e:
+            raise ValueError("File downloaded but couldn't open as image: " + str(e))
+    else:
+        raise ValueError('Invalid image URL or not an image file')
 
 def preprocess_image(image):
     try:
